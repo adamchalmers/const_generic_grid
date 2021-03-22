@@ -39,4 +39,10 @@ impl<T> Gridlike<T> for Grid<T> {
             });
         });
     }
+    fn width(&self) -> usize {
+        self.width
+    }
+    fn height(&self) -> usize {
+        self.height
+    }
 }

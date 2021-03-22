@@ -24,4 +24,7 @@ pub trait Gridlike<T> {
     where
         F: Send + Sync + Fn(Point) -> T,
         T: Send;
+
+    fn width(&self) -> usize;
+    fn height(&self) -> usize;
 }

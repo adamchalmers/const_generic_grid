@@ -37,4 +37,10 @@ where
             *item = setter(Point { x: i % W, y: i / W });
         });
     }
+    fn width(&self) -> usize {
+        W
+    }
+    fn height(&self) -> usize {
+        H
+    }
 }

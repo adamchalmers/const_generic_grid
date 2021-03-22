@@ -40,4 +40,10 @@ where
             }
         });
     }
+    fn width(&self) -> usize {
+        W
+    }
+    fn height(&self) -> usize {
+        H
+    }
 }
