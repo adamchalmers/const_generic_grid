@@ -3,8 +3,8 @@ use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criteri
 const WIDTH: usize = 300;
 const HEIGHT: usize = 200;
 
-fn compare_grid_impls(c: &mut Criterion) {
-    let mut group = c.benchmark_group("Grid");
+fn set_grid_bench(c: &mut Criterion) {
+    let mut group = c.benchmark_group("SetGrid");
     let operation = black_box(|difficulty| {
         move |Point { mut x, mut y }| {
             for _ in 0..difficulty {
@@ -40,5 +40,5 @@ fn compare_grid_impls(c: &mut Criterion) {
     group.finish();
 }
 
-criterion_group!(benches, compare_grid_impls);
+criterion_group!(benches, set_grid_bench);
 criterion_main!(benches);
