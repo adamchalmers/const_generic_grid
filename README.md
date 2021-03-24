@@ -1,0 +1,1 @@
+A simple Grid API, with four different implementations. Benchmarks compare the performance characteristics of each implementation. To run benchmarks, just use `cargo bench` in the root of this repo.

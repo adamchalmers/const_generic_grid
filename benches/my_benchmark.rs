@@ -3,7 +3,6 @@ use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criteri
 use rand::Rng;
 const WIDTH: usize = 300;
 const HEIGHT: usize = 200;
-const BASE: u32 = 10;
 
 /// Some hard math operation to apply to the grid.
 fn operation(difficulty: usize) -> impl Fn(Point) -> usize {
