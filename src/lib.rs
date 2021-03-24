@@ -7,6 +7,7 @@ pub mod vec1d;
 pub mod vec2d;
 
 /// A point used to index a 2D grid.
+#[derive(Clone, Copy)]
 pub struct Point {
     pub x: usize,
     pub y: usize,
@@ -14,8 +15,11 @@ pub struct Point {
 
 /// A container which stores elements at 2D points.
 pub trait Gridlike<T> {
+    fn width(&self) -> usize;
+    fn height(&self) -> usize;
+
     /// Get the element at the given point.
-    fn get(&self, p: &Point) -> &T;
+    fn get(&self, p: Point) -> &T;
 
     /// Set all elements of the grid, using a setter function.
     /// The setter function takes a point and returns the value which should be
@@ -24,7 +28,4 @@ pub trait Gridlike<T> {
     where
         F: Send + Sync + Fn(Point) -> T,
         T: Send;
-
-    fn width(&self) -> usize;
-    fn height(&self) -> usize;
 }

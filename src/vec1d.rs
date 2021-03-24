@@ -1,10 +1,9 @@
-use crate::Gridlike;
+use crate::{Gridlike, Point};
 
-use super::Point;
 pub struct Grid<T> {
     array: Vec<T>,
-    pub width: usize,
-    pub height: usize,
+    width: usize,
+    height: usize,
 }
 
 impl<T> Grid<T> {
@@ -21,7 +20,15 @@ impl<T> Grid<T> {
 }
 
 impl<T> Gridlike<T> for Grid<T> {
-    fn get(&self, p: &Point) -> &T {
+    fn width(&self) -> usize {
+        self.width
+    }
+
+    fn height(&self) -> usize {
+        self.height
+    }
+
+    fn get(&self, p: Point) -> &T {
         &self.array[p.y * self.width + p.x]
     }
 
@@ -38,11 +45,5 @@ impl<T> Gridlike<T> for Grid<T> {
                 y: i / width,
             });
         });
-    }
-    fn width(&self) -> usize {
-        self.width
-    }
-    fn height(&self) -> usize {
-        self.height
     }
 }

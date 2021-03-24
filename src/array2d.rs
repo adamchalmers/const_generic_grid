@@ -24,7 +24,15 @@ impl<T, const W: usize, const H: usize> Gridlike<T> for Grid<T, W, H>
 where
     [T; W * H]: Sized,
 {
-    fn get(&self, p: &Point) -> &T {
+    fn width(&self) -> usize {
+        W
+    }
+
+    fn height(&self) -> usize {
+        H
+    }
+
+    fn get(&self, p: Point) -> &T {
         &self.array[p.y][p.x]
     }
 
@@ -39,11 +47,5 @@ where
                 *item = setter(Point { x, y });
             }
         });
-    }
-    fn width(&self) -> usize {
-        W
-    }
-    fn height(&self) -> usize {
-        H
     }
 }
