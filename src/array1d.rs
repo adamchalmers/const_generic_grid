@@ -1,16 +1,15 @@
-use crate::Gridlike;
+use crate::{Gridlike, Point};
 
-use super::Point;
 pub struct Grid<T, const W: usize, const H: usize>
 where
-    [T; W * H]: Sized,
+    [(); W * H]: Sized,
 {
     array: [T; W * H],
 }
 
 impl<T, const W: usize, const H: usize> Default for Grid<T, W, H>
 where
-    [T; W * H]: Sized,
+    [(); W * H]: Sized,
     T: Default + Copy,
 {
     fn default() -> Self {
@@ -22,7 +21,7 @@ where
 
 impl<T, const W: usize, const H: usize> Gridlike<T> for Grid<T, W, H>
 where
-    [T; W * H]: Sized,
+    [(); W * H]: Sized,
 {
     fn width(&self) -> usize {
         W

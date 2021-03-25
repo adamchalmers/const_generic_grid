@@ -10,11 +10,7 @@ fn operation(difficulty: usize) -> impl Fn(Point) -> usize {
         move |Point { mut x, mut y }| {
             for _ in 0..difficulty {
                 y = x + y;
-                x = if difficulty >= 1 && x % 2 == 0 {
-                    x.pow(2) + y
-                } else {
-                    x + y
-                }
+                x = if x % 2 == 0 { x.pow(2) + y } else { x + y }
             }
             x + y
         }
@@ -25,7 +21,7 @@ fn operation(difficulty: usize) -> impl Fn(Point) -> usize {
 /// Benchmark the `set_all_parallel` method of Gridlike.
 fn set_grid_bench(c: &mut Criterion) {
     let mut group = c.benchmark_group("Set");
-    let difficulties = vec![1, 5];
+    let difficulties = vec![1, 5, 10];
     for d in difficulties {
         group.bench_with_input(BenchmarkId::new("1D Array", d), &d, |b, d| {
             let mut g: array1d::Grid<usize, WIDTH, HEIGHT> = Default::default();
